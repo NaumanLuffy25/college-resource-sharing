@@ -19,7 +19,9 @@ const app = express();
 
 app.use(helmet({ crossOriginResourcePolicy: { policy: 'cross-origin' } }));
 app.use(cors({
-  origin: process.env.NODE_ENV === 'production' ? 'http://localhost:3000' : ['http://localhost:5173', 'http://localhost:3000'],
+  origin: process.env.NODE_ENV === 'production'
+    ? (process.env.RENDER_EXTERNAL_URL || process.env.CORS_ORIGIN || 'https://college-resource-sharing.onrender.com')
+    : ['http://localhost:5173', 'http://localhost:3000'],
   credentials: true,
 }));
 app.use(compression());
