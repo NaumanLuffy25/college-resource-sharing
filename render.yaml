@@ -3,7 +3,7 @@ services:
     name: college-resource-sharing
     runtime: node
     plan: free
-    buildCommand: cd server && npm install && cd ../client && npm install && cd .. && npm run build
+    buildCommand: cd server && npm install
     startCommand: cd server && npx ts-node --transpile-only src/index.ts
     envVars:
       - key: NODE_ENV
